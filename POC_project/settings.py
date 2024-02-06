@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'accounts'
+    'accounts',
+    'blogs'
 
 
 ]
@@ -87,12 +88,16 @@ WSGI_APPLICATION = 'POC_project.wsgi.application'
 #     }
 # }
 AUTH_USER_MODEL = 'accounts.CustomUser'
+BLOG_POST_MODEL = 'accounts.BlogPost'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
-    # Other settings...
+    "DEFAULT_PERMISSION_CLASSES": [
+    "rest_framework.permissions.AllowAny",
+    ],
+
 }
 
 DATABASES = {
