@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+
     'accounts',
-    'blogs'
+    'blogs',
+    'comments'
+
 
 
 ]
@@ -88,17 +94,25 @@ WSGI_APPLICATION = 'POC_project.wsgi.application'
 #     }
 # }
 AUTH_USER_MODEL = 'accounts.CustomUser'
-BLOG_POST_MODEL = 'accounts.BlogPost'
+BLOG_POST_MODEL = 'blogs.Post'
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.TokenAuthentication',
+    #
+    #
+    # ],
+
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+
     "DEFAULT_PERMISSION_CLASSES": [
-    "rest_framework.permissions.AllowAny",
+   # "rest_framework.permissions.i",
     ],
 
 }
+
 
 DATABASES = {
    'default': {
@@ -152,3 +166,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Email confirmation
+

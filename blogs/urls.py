@@ -1,13 +1,11 @@
-
+# posts/urls.py
 from django.urls import path
-
-from blogs.views import post_list
-
-# from .views import register_user
-# from .views import user_login
-
+from .views import PostList, PostDetail,post_remove
 urlpatterns = [
-    # path('register/', register_user, name='register'),
-    path('blog/', post_list),
+    path("<int:pk>", PostDetail.as_view(), name="post_detail"),
 
+    path("blog", PostList.as_view(), name="post_list"),
+    path("blog/<int:pk>",post_remove, name="post_remove")
+
+    # path("view", view_all , name="view"),
 ]
